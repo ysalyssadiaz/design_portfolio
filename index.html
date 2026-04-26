@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Your Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script src="script.js"></script>
+  <body>
+    <!-- menudropdown-->
+<div class="menu" id="menu">
+
+  <!-- FULL DROPDOWN (moves together) -->
+  <div class="menu-panel">
+
+    <div class="menu-text">
+      <p>Email: your@email.com</p>
+      <p>LinkedIn: your-linkedin</p>
+    </div>
+
+    <!-- SCALLOP AT BOTTOM -->
+    <div class="menu-handle" onclick="toggleMenu()">
+      <img src="images/homepage/menudrop.png" alt="Menu">
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+    <!-- introbox -->
+    <div class="intro">
+      <img
+        src="images/homepage/introbox.png"
+        alt="Intro Box"
+        class="intro-box"
+      />
+      <div class="intro-text">
+        <p>Your short intro text goes here. Keep it brief.</p>
+      </div>
+    </div>
+
+    <!-- PROJECTS SECTION -->
+    <h2 class="projects-title">Projects</h2>
+
+    <div class="projects-grid">
+      <a href="project1.html" class="project-card">
+        <img src="images/project1.png" alt="Project 1" />
+        <div class="project-info">
+          <h3>Project Title 1</h3>
+          <p>Type of Project</p>
+        </div>
+      </a>
+
+      <a href="project2.html" class="project-card">
+        <img src="images/project2.png" alt="Project 2" />
+        <div class="project-info">
+          <h3>Project Title 2</h3>
+          <p>Type of Project</p>
+        </div>
+      </a>
+
+      <a href="project3.html" class="project-card">
+        <img src="images/project3.png" alt="Project 3" />
+        <div class="project-info">
+          <h3>Project Title 3</h3>
+          <p>Type of Project</p>
+        </div>
+      </a>
+
+      <a href="project4.html" class="project-card">
+        <img src="images/project4.png" alt="Project 4" />
+        <div class="project-info">
+          <h3>Project Title 4</h3>
+          <p>Type of Project</p>
+        </div>
+      </a>
+    </div>
+
+    <script>
+      function toggleContact() {
+        const menu = document.getElementById("contact-menu");
+        menu.classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>

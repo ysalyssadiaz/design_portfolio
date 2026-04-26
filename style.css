@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f6f2;
+}
+
+/* MENU CONTAINER */
+/* OUTER WRAPPER CONTROLS VISIBILITY */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  height: 70px; /* ONLY visible scallop area */
+  transition: height 0.4s ease;
+  z-index: 1000;
+}
+
+/* OPEN STATE (reveals full menu) */
+.menu.open {
+  height: 180px; /* full dropdown height */
+}
+
+/* IMAGE */
+.menu-handle img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* TEXT INSIDE */
+.menu-text {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+/* intro section */
+.intro {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.intro-box {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.intro-text {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30%;
+  font-size: 14px;
+}
+
+/* PROJECTS TITLE */
+.projects-title {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+}
+
+/* PROJECT GRID */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 80%;
+  margin: 40px auto;
+}
+
+/* PROJECT CARD */
+.project-card {
+  text-decoration: none;
+  color: black;
+}
+
+.project-card img {
+  width: 100%;
+  display: block;
+}
+
+.project-info {
+  margin-top: 10px;
+}
+
+.project-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.project-info p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: gray;
+}
+
+/* HOVER EFFECT */
+.project-card:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}
