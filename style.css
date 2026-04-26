@@ -2,49 +2,65 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f8f6f2;
+  overflow-x: hidden;
+}
+/* text */
+a {
+  color: #001e2c; /* link colour */
+  text-decoration: none; /* removes underline */
 }
 
-/* MENU CONTAINER */
-/* OUTER WRAPPER CONTROLS VISIBILITY */
-.menu {
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-panel {
   position: fixed;
-  top: 0;
+  top: -180px;
   left: 0;
   width: 100%;
-  overflow: hidden;
-  height: 70px; /* ONLY visible scallop area */
-  transition: height 0.4s ease;
+  transition: top 0.4s ease;
   z-index: 1000;
 }
 
-/* OPEN STATE (reveals full menu) */
-.menu.open {
-  height: 180px; /* full dropdown height */
+.menu.open .menu-panel {
+  top: 0;
 }
 
-/* IMAGE */
+.menu-text {
+  background: #001e2c;
+  color: white;
+  text-align: center;
+  padding: 40px 0 80px;
+}
+
+.menu-handle {
+  margin-top: -5px;
+}
+
 .menu-handle img {
   width: 100%;
-  height: auto;
   display: block;
 }
 
-/* TEXT INSIDE */
-.menu-text {
-  position: absolute;
-  top: 30px;
-  width: 100%;
-  text-align: center;
-  color: white;
-}
+/* =========================
+   INTRO
+========================= */
 
-/* intro section */
 .intro {
   width: 100%;
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 150px auto;
   position: relative;
-  z-index: 1;
 }
 
 .intro-box {
@@ -55,56 +71,81 @@ body {
 
 .intro-text {
   position: absolute;
-  right: 10%;
-  top: 50%;
+  top: 53%;
+  right: 12%;
   transform: translateY(-50%);
+
   width: 30%;
-  font-size: 14px;
+  font-family: Iansui;
+  font-weight: 600;
+  color: #001e2c;
+
+  font-size: clamp(13px, 1.5vw, 20px);
+  padding: 1em;
 }
 
-/* PROJECTS TITLE */
+/* =========================
+   PROJECT TITLE
+========================= */
+
 .projects-title {
+  font-family: Iansui;
   text-align: center;
   margin-top: 40px;
   font-size: 24px;
 }
 
-/* PROJECT GRID */
+/* =========================
+   GRID
+========================= */
+
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
+  justify-items: center;
   gap: 30px;
-  width: 80%;
-  margin: 40px auto;
 }
 
-/* PROJECT CARD */
+/* =========================
+   PROJECT CARD
+========================= */
+
 .project-card {
-  text-decoration: none;
-  color: black;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* IMAGE */
 .project-card img {
   width: 100%;
+  max-width: 1200px;
+  height: auto;
   display: block;
 }
 
+/* TEXT */
 .project-info {
-  margin-top: 10px;
+  width: 100%;
+  text-align: left;
 }
 
 .project-info h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: clamp(20px, 2vw, 40px);
+  color: #001e2c;
 }
 
 .project-info p {
   margin: 5px 0 0;
   font-size: 14px;
-  color: gray;
+  color: #001e2c;
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .project-card:hover {
   transform: scale(1.02);
   transition: 0.2s;
