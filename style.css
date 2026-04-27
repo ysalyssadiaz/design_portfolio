@@ -1,4 +1,4 @@
-/* --- RESET & GLOBAL (Same as Master, keeping it clean) --- */
+/* --- RESET & GLOBAL --- */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     width: 100%;
 }
 
-/* --- HEADER & HERO (No changes, Master standard) --- */
+/* --- HEADER --- */
 header {
     background-color: #00a3a3;
     padding: 5px 0 5px 0;
@@ -20,8 +20,13 @@ header {
     border-bottom-left-radius: 40px;
     border-bottom-right-radius: 40px;
     box-shadow: 0 13px 0 0 #bbdb95;
-    position: relative;
-    z-index: 100;
+    
+    /* Sticky Magic */
+    position: fixed;         /* Locks it to the viewport */
+    top: 0;                  /* Sticks it to the very top */
+    left: 0;
+    width: 100%;             /* Ensures it spans the full width */
+    z-index: 1000;           /* High number to stay above everything else */
 }
 
 nav a {
@@ -30,8 +35,20 @@ nav a {
     font-weight: 700;
     margin: 0 90px;
     font-size: 2.5rem;
+    /* 1. Add a transition to make the growth smooth */
+    display: inline-block; /* Required for transform to work perfectly */
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
+nav a:hover {
+    /* 2. Scale it up slightly (1.1 means 110% size) */
+    transform: scale(1.1);
+    
+    /* 3. Optional: Change the color to your banner green on hover */
+    color: #edffcd; 
+}
+
+/* --- HERO SECTION --- */
 #hero {
     position: relative;
     width: 100%;
@@ -47,58 +64,51 @@ nav a {
 /* THE FULL-WIDTH BANNER */
 .intro-banner-full {
     position: absolute;
-    width: 100vw;           /* Force it to be exactly the width of the screen */
+    width: 100vw;
     left: 0;
-    top: 63%;               /* Adjust this % to move it up or down behind the logo */
-    background-color:#edffcd; /* Your light green with some transparency */
+    top: 63%;
+    background-color: #edffcd;
     padding: 20px 0;
-    z-index: 5;             /* Sits above stars but below logo */
-    opacity: 70%;
+    z-index: 5;
+    opacity: 0.7; /* Using decimal for standard CSS opacity */
 }
 
-/* Align the text inside the banner to match your logo's position */
 .intro-content-aligner {
     max-width: 1200px;
     margin: 0 auto;
-    padding-left: 45%;      /* This pushes the text to the right side of your logo head */
+    padding-left: 640px; 
 }
 
 .intro-text {
     font-size: 1.8rem;
     color: #389a39;
     font-weight: 600;
-    max-width: 600px;       /* Keeps the text from stretching too wide */
-}
-
-.intro-content-aligner {
-    max-width: 1200px;
-    margin: 0 auto;
-    /* Adjust this value until the text clears the right side of the logo */
-    padding-left: 640px; 
+    max-width: 600px;
 }
 
 /* THE LOGO CONTAINER */
 .hero-container {
     position: relative;
     z-index: 10;
-    width: 100%;            /* Allows us to use margins to position the logo */
-    max-width: 1400px;      /* Matches your content width */
-    margin: 0;         /* Centers the "lane" the logo sits in */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0;
     display: flex;
-    justify-content: flex-start; /* Pushes the content (the logo) to the left */
-    padding-left: 2%;       /* Gives it a little breathing room from the very edge */
+    justify-content: flex-start;
+    padding-left: 2%;
     pointer-events: none;
 }
 
 .name-logo {
-    width: 800px;           
+    width: 800px;
     height: auto;
     display: block;
     margin-left: -100px;
-    /* If it's still too far right, you can add a negative margin:
-       margin-left: -50px; */
+    /* Animation settings */
+    animation: softFloat 4s ease-in-out infinite;
 }
 
+/* --- BACKGROUND DECORATIONS --- */
 .bg-star {
     position: absolute;
     left: 2%;
@@ -108,27 +118,28 @@ nav a {
     opacity: 0.7;
 }
 
-/* --- INDEPENDENT HALFTONE CONTROLS --- */
-
-/* --- THE HALFTONE CONTROLS --- */
 .halftone-1, .halftone-2, .halftone-3 {
     position: absolute;
-    z-index: 1;         /* Lower than hero-container so they stay behind */
+    z-index: 1;
     opacity: 0.4;
     pointer-events: none;
+    /* Adjust '0.2s' to make it faster or slower */
+    animation: jitter 5s step-end infinite;
+    
+    /* This ensures the animation doesn't make the circles "jumpy" 
+       for people with motion sensitivity */
+    will-change: transform;
 }
 
 .halftone-1 { top: -40%; right: -12%; width: 800px; }
 .halftone-2 { top: 0%; left: 4%; width: 700px; }
-/* =========================================
-   WORK SECTION - STAGGERED GRID UPGRADE
-   ========================================= */
 
+/* --- WORK SECTION HEADER --- */
 .work-header {
     position: relative;
-    width: 94%;
-    max-width: 1200px;
-    margin: 40px auto;
+    width: 98%;
+    max-width: 1600px;
+    margin: 120px auto 60px auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -137,6 +148,7 @@ nav a {
 .work-headline-img {
     width: 100%;
     height: auto;
+    display: block;
 }
 
 .work-title {
@@ -146,110 +158,115 @@ nav a {
     font-weight: 700;
 }
 
-/* THIS CONTAINER HOLDS ALL THE PROJECTS */
+/* --- PROJECT FEED (STAGGERED TWO-COLUMN GRID) --- */
 .project-feed {
-    width: 90%;
-    max-width: 1100px; /* Wider to allow two columns */
+    width: 98%;           
+    max-width: 1800px;    /* Slightly narrower lane for a tighter grid feel */
     margin: 0 auto 100px auto;
     display: flex;
-    flex-wrap: wrap; /* Essential to allow columns to wrap on mobile */
-    gap: 60px 50px; /* Space between rows (60px) and columns (50px) */
-    justify-content: center; /* Centers the full grid on the screen */
+    flex-wrap: wrap;      /* Allows cards to move to the next row */
+    justify-content: center;
+    gap: 40px;            /* Horizontal space between columns */
 }
 
-/* THE PROJECT CARD IS NOW A 'GRID UNIT' */
+/* THE CARDS */
 .project-card {
     display: flex;
     flex-direction: column;
     text-decoration: none;
     
-    /* On large screens, this makes each card slightly less than 
-       half the container width, forcing two per row. */
-    flex: 0 1 calc(50% - 30px);
-    max-width: 500px; /* Limits the max size of any single card */
+    /* This width (45%) ensures two cards sit side-by-side */
+    flex: 0 1 48%; 
+    max-width: 1200px;     
     
-    position: relative; /* Essential for text alignment shifting */
+    position: relative;
     transition: transform 0.2s;
+    margin-bottom: 10px;  /* Space between rows */
+}
+
+/* THE STAGGER EFFECT 
+   This targets the 2nd, 4th, 6th card etc. and pushes them down 
+   to create that "un-even" stacking look. */
+.project-card:nth-of-type(even) {
+    margin-top: 100px; 
 }
 
 .project-card:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
+/* THE PROJECT IMAGE */
 .final-render {
     width: 100%;
     height: auto;
     display: block;
+    position: relative; 
+    z-index: 5;         
 }
 
-/* THE TEXT LABEL BAR (Standard left-aligned version) */
+/* THE TEXT LABEL BAR (Always Left) */
 .project-info-label {
     background-color: #00a3a3;
     color: white;
-    padding: 15px 20px;
-    width: 85%; /* Narrower than image */
-    margin: -15px auto 0 0; /* Aligns to left and overlaps image */
-    border-bottom-right-radius: 20px;
+    width: 85%;
+    padding: 42px 30px 15px 30px;
     
-    /* This makes the text itself left-aligned */
-    text-align: left; 
+    /* Tucked under the image */
+    margin: -35px 0 0 0;  /* Keeps it strictly to the left edge of the card */
+
+    border-bottom-left-radius: 25px;
+    
+    position: relative; 
+    z-index: 2;         
+    text-align: left;
 }
 
 .project-info-label h3 {
-    font-size: 1.2rem;
+    font-size: 1.8rem; /* Scaled down slightly for 2-column fit */
     font-weight: 800;
     margin-bottom: 5px;
 }
 
 .project-info-label p {
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-size: 1.2rem; /* Scaled down slightly for 2-column fit */
 }
 
-/* =========================================
-   STAGGERING MAGIC: Target even-numbered items (2, 4, 6, etc.)
-   ========================================= */
-
-/* 1. Stagger the second card downward and slightly left */
-.project-card:nth-of-type(even) {
-    margin-top: 100px; /* This creates the staggered offset seen in your draft */
-    margin-left: -20px; /* Optional: adds an inward lean from your draft */
-}
-
-/* 2. Target the LABEL BAR of even-numbered projects and move it to the right */
-.project-card:nth-of-type(even) .project-info-label {
-    /* Moves the bar to align to the right edge of the image */
-    margin-left: auto;
-    margin-right: 0;
-    
-    /* Aligns the text itself to the right within the bar */
-    text-align: right; 
-}
-
-/* =========================================
-   RESPONSIVE DESIGN (For Mobile/Small Screens)
-   On screens narrower than 768px, we must stack them back into a single list
-   or they will become too small to read.
-   ========================================= */
-@media screen and (max-width: 768px) {
-    .project-feed {
-        gap: 40px; /* Tighter spacing */
-    }
-    
+/* --- RESPONSIVE DESIGN --- */
+@media screen and (max-width: 1024px) {
     .project-card {
-        flex: 1 1 100%; /* Force full width */
-        max-width: 100%;
+        flex: 0 1 100%; /* Switch to 1 column on tablets/phones */
+        max-width: 800px;
     }
     
-    /* Remove all staggered offsets for mobile */
     .project-card:nth-of-type(even) {
-        margin-top: 0;
-        margin-left: 0;
+        margin-top: 0; /* Remove stagger on mobile so they just stack straight */
     }
-    
-    /* Force all labels back to left-aligned for consistency on mobile */
-    .project-card:nth-of-type(even) .project-info-label {
-        margin-left: 0;
-        text-align: left;
+}
+
+/* 1. Define the "Floating" movement */
+@keyframes softFloat {
+    0% {
+        transform: translateY(0px);
     }
+    50% {
+        transform: translateY(-15px); /* Moves up 15 pixels */
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* 1. Define the Jitter movement */
+@keyframes jitter {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-1px, -2px); }
+    20% { transform: translate(2px, 1px); }
+    30% { transform: translate(-2px, -1px); }
+    40% { transform: translate(1px, 2px); }
+    50% { transform: translate(-1px, -1px); }
+    60% { transform: translate(2px, 2px); }
+    70% { transform: translate(-2px, 1px); }
+    80% { transform: translate(1px, -2px); }
+    90% { transform: translate(-1px, 2px); }
+    100% { transform: translate(0, 0); }
 }
