@@ -1,152 +1,255 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f8f6f2;
-  overflow-x: hidden;
-}
-/* text */
-a {
-  color: #001e2c; /* link colour */
-  text-decoration: none; /* removes underline */
-}
-
-/* GLOBAL */
+/* --- RESET & GLOBAL (Same as Master, keeping it clean) --- */
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+body {
+    background-color: #f2f2d8;
+    font-family: 'Inconsolata', monospace;
+    overflow-x: hidden;
+    width: 100%;
 }
 
-/* =========================
-   MENU
-========================= */
-
-.menu-panel {
-  position: fixed;
-  top: -180px;
-  left: 0;
-  width: 100%;
-  transition: top 0.4s ease;
-  z-index: 1000;
+/* --- HEADER & HERO (No changes, Master standard) --- */
+header {
+    background-color: #00a3a3;
+    padding: 5px 0 5px 0;
+    text-align: center;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 13px 0 0 #bbdb95;
+    position: relative;
+    z-index: 100;
 }
 
-.menu.open .menu-panel {
-  top: 0;
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 0 90px;
+    font-size: 2.5rem;
 }
 
-.menu-text {
-  background: #001e2c;
-  color: white;
-  text-align: center;
-  padding: 40px 0 80px;
+#hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 180px 5% 60px 5%;
 }
 
-.menu-handle {
-  margin-top: -5px;
+/* THE FULL-WIDTH BANNER */
+.intro-banner-full {
+    position: absolute;
+    width: 100vw;           /* Force it to be exactly the width of the screen */
+    left: 0;
+    top: 63%;               /* Adjust this % to move it up or down behind the logo */
+    background-color:#edffcd; /* Your light green with some transparency */
+    padding: 20px 0;
+    z-index: 5;             /* Sits above stars but below logo */
+    opacity: 70%;
 }
 
-.menu-handle img {
-  width: 100%;
-  display: block;
-}
-
-/* =========================
-   INTRO
-========================= */
-
-.intro {
-  width: 100%;
-  max-width: 900px;
-  margin: 150px auto;
-  position: relative;
-}
-
-.intro-box {
-  width: 100%;
-  height: auto;
-  display: block;
+/* Align the text inside the banner to match your logo's position */
+.intro-content-aligner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 45%;      /* This pushes the text to the right side of your logo head */
 }
 
 .intro-text {
-  position: absolute;
-  top: 53%;
-  right: 12%;
-  transform: translateY(-50%);
-
-  width: 30%;
-  font-family: Iansui;
-  font-weight: 600;
-  color: #001e2c;
-
-  font-size: clamp(13px, 1.5vw, 20px);
-  padding: 1em;
+    font-size: 1.8rem;
+    color: #389a39;
+    font-weight: 600;
+    max-width: 600px;       /* Keeps the text from stretching too wide */
 }
 
-/* =========================
-   PROJECT TITLE
-========================= */
-
-.projects-title {
-  font-family: Iansui;
-  text-align: center;
-  margin-top: 40px;
-  font-size: 24px;
+.intro-content-aligner {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Adjust this value until the text clears the right side of the logo */
+    padding-left: 640px; 
 }
 
-/* =========================
-   GRID
-========================= */
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  gap: 30px;
+/* THE LOGO CONTAINER */
+.hero-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;            /* Allows us to use margins to position the logo */
+    max-width: 1400px;      /* Matches your content width */
+    margin: 0;         /* Centers the "lane" the logo sits in */
+    display: flex;
+    justify-content: flex-start; /* Pushes the content (the logo) to the left */
+    padding-left: 2%;       /* Gives it a little breathing room from the very edge */
+    pointer-events: none;
 }
 
-/* =========================
-   PROJECT CARD
-========================= */
+.name-logo {
+    width: 800px;           
+    height: auto;
+    display: block;
+    margin-left: -100px;
+    /* If it's still too far right, you can add a negative margin:
+       margin-left: -50px; */
+}
 
+.bg-star {
+    position: absolute;
+    left: 2%;
+    top: -100px;
+    width: 700px;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+/* --- INDEPENDENT HALFTONE CONTROLS --- */
+
+/* --- THE HALFTONE CONTROLS --- */
+.halftone-1, .halftone-2, .halftone-3 {
+    position: absolute;
+    z-index: 1;         /* Lower than hero-container so they stay behind */
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.halftone-1 { top: -40%; right: -12%; width: 800px; }
+.halftone-2 { top: 0%; left: 4%; width: 700px; }
+/* =========================================
+   WORK SECTION - STAGGERED GRID UPGRADE
+   ========================================= */
+
+.work-header {
+    position: relative;
+    width: 94%;
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.work-headline-img {
+    width: 100%;
+    height: auto;
+}
+
+.work-title {
+    position: absolute;
+    color: white;
+    font-size: 6rem;
+    font-weight: 700;
+}
+
+/* THIS CONTAINER HOLDS ALL THE PROJECTS */
+.project-feed {
+    width: 90%;
+    max-width: 1100px; /* Wider to allow two columns */
+    margin: 0 auto 100px auto;
+    display: flex;
+    flex-wrap: wrap; /* Essential to allow columns to wrap on mobile */
+    gap: 60px 50px; /* Space between rows (60px) and columns (50px) */
+    justify-content: center; /* Centers the full grid on the screen */
+}
+
+/* THE PROJECT CARD IS NOW A 'GRID UNIT' */
 .project-card {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    
+    /* On large screens, this makes each card slightly less than 
+       half the container width, forcing two per row. */
+    flex: 0 1 calc(50% - 30px);
+    max-width: 500px; /* Limits the max size of any single card */
+    
+    position: relative; /* Essential for text alignment shifting */
+    transition: transform 0.2s;
 }
 
-/* IMAGE */
-.project-card img {
-  width: 100%;
-  max-width: 1200px;
-  height: auto;
-  display: block;
-}
-
-/* TEXT */
-.project-info {
-  width: 100%;
-  text-align: left;
-}
-
-.project-info h3 {
-  margin: 0;
-  font-size: clamp(20px, 2vw, 40px);
-  color: #001e2c;
-}
-
-.project-info p {
-  margin: 5px 0 0;
-  font-size: 14px;
-  color: #001e2c;
-}
-
-/* HOVER */
 .project-card:hover {
-  transform: scale(1.02);
-  transition: 0.2s;
+    transform: scale(1.02);
+}
+
+.final-render {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* THE TEXT LABEL BAR (Standard left-aligned version) */
+.project-info-label {
+    background-color: #00a3a3;
+    color: white;
+    padding: 15px 20px;
+    width: 85%; /* Narrower than image */
+    margin: -15px auto 0 0; /* Aligns to left and overlaps image */
+    border-bottom-right-radius: 20px;
+    
+    /* This makes the text itself left-aligned */
+    text-align: left; 
+}
+
+.project-info-label h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.project-info-label p {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* =========================================
+   STAGGERING MAGIC: Target even-numbered items (2, 4, 6, etc.)
+   ========================================= */
+
+/* 1. Stagger the second card downward and slightly left */
+.project-card:nth-of-type(even) {
+    margin-top: 100px; /* This creates the staggered offset seen in your draft */
+    margin-left: -20px; /* Optional: adds an inward lean from your draft */
+}
+
+/* 2. Target the LABEL BAR of even-numbered projects and move it to the right */
+.project-card:nth-of-type(even) .project-info-label {
+    /* Moves the bar to align to the right edge of the image */
+    margin-left: auto;
+    margin-right: 0;
+    
+    /* Aligns the text itself to the right within the bar */
+    text-align: right; 
+}
+
+/* =========================================
+   RESPONSIVE DESIGN (For Mobile/Small Screens)
+   On screens narrower than 768px, we must stack them back into a single list
+   or they will become too small to read.
+   ========================================= */
+@media screen and (max-width: 768px) {
+    .project-feed {
+        gap: 40px; /* Tighter spacing */
+    }
+    
+    .project-card {
+        flex: 1 1 100%; /* Force full width */
+        max-width: 100%;
+    }
+    
+    /* Remove all staggered offsets for mobile */
+    .project-card:nth-of-type(even) {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    
+    /* Force all labels back to left-aligned for consistency on mobile */
+    .project-card:nth-of-type(even) .project-info-label {
+        margin-left: 0;
+        text-align: left;
+    }
 }

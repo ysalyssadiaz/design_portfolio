@@ -1,94 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Your Portfolio</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Diaz | Digital Designer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <link rel="stylesheet" href="style.css" />
+    <header>
+        <nav>
+            <a href="#work">WORK</a>
+            <a href="#about">ABOUT</a>
+        </nav>
+    </header>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Iansui&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+<section id="hero">
+    <img src="images/homepage-assets/star.png" class="bg-star" alt="">
+    <img src="images/homepage-assets/halftone-circles.png" class="halftone-1" alt="">
+    <img src="images/homepage-assets/halftone-circles.png" class="halftone-2" alt="">
 
-  <body>
-    <!-- MENU -->
-    <div class="menu" id="menu">
-      <div class="menu-panel">
-        <div class="menu-text">
-          <p>Email: your@email.com</p>
-          <p>LinkedIn: your-linkedin</p>
+    <div class="intro-banner-full">
+        <div class="intro-content-aligner">
+            <p class="intro-text">is a digital designer that crafts immersive storytelling environments!</p>
         </div>
-
-        <div class="menu-handle" onclick="toggleMenu()">
-          <img src="images/homepage/menudrop.png" alt="Menu" />
-        </div>
-      </div>
     </div>
 
-    <!-- INTRO -->
-    <div class="intro">
-      <img
-        src="images/homepage/introbox.png"
-        alt="Intro Box"
-        class="intro-box"
-      />
-
-      <div class="intro-text">
-        <p>
-          is a digital designer focused on crafting immersive storytelling
-          environments.
-        </p>
-      </div>
+    <div class="hero-container">
+        <img src="images/homepage-assets/name-logo.png" alt="Alyssa Diaz" class="name-logo">
     </div>
+</section>
 
-    <!-- PROJECTS -->
-    <h2 class="projects-title">Projects</h2>
-
-    <div class="projects-grid">
-      <a href="project1.html" class="project-card">
-        <img src="images/homepage/elsewhere_thumbnail.png" alt="Project 1" />
-        <div class="project-info">
-          <h3>Elsewhere</h3>
-          <p>Finding belonging and peace in solitude.</p>
+    <section id="work">
+        <div class="work-header">
+            <img src="images/homepage-assets/work-headline.png" alt="" class="work-headline-img">
+            <h2 class="work-title">WORK</h2>
         </div>
-      </a>
 
-      <a href="project2.html" class="project-card">
-        <img src="images/project2.png" alt="Project 2" />
-        <div class="project-info">
-          <h3>Project Title 2</h3>
-          <p>Type of Project</p>
+<div class="project-feed">
+    
+    <a href="elsewhere.html" class="project-card">
+        <div class="project-image-container">
+            <img src="images/homepage-assets/elsewhere-thumbnail.png" alt="Elsewhere Project" class="final-render">
         </div>
-      </a>
-
-      <a href="project3.html" class="project-card">
-        <img src="images/project3.png" alt="Project 3" />
-        <div class="project-info">
-          <h3>Project Title 3</h3>
-          <p>Type of Project</p>
+        <div class="project-info-label">
+            <h3>ELSEWHERE — 3D VIRTUAL</h3>
+            <p>Finding belonging and peace in solitude.</p>
         </div>
-      </a>
+    </a>
 
-      <a href="project4.html" class="project-card">
-        <img src="images/project4.png" alt="Project 4" />
-        <div class="project-info">
-          <h3>Project Title 4</h3>
-          <p>Type of Project</p>
+    <a href="project-2.html" class="project-card">
+        <div class="project-image-container">
+            <img src="images/homepage-assets/elsewhere-thumbnail.png" alt="Project 2" class="final-render">
         </div>
-      </a>
-    </div>
+        <div class="project-info-label">
+            <h3>PROJECT TWO — CONCEPT</h3>
+            <p>Exploring new dimensions in digital space.</p>
+        </div>
+    </a>
 
-    <!-- SCRIPT (MUST BE INSIDE BODY) -->
-    <script src="script.js"></script>
+    <a href="project-3.html" class="project-card">
+        <div class="project-image-container">
+            <img src="images/homepage-assets/elsewhere-thumbnail.png" alt="Project 3" class="final-render">
+        </div>
+        <div class="project-info-label">
+            <h3>PROJECT THREE — INTERACTIVE</h3>
+            <p>Storytelling through immersive UI design.</p>
+        </div>
+    </a>
 
-    <script>
-      function toggleMenu() {
-        document.getElementById("menu").classList.toggle("open");
-      }
-    </script>
-  </body>
+    <a href="project-4.html" class="project-card">
+        <div class="project-image-container">
+            <img src="images/homepage-assets/elsewhere-thumbnail.png" alt="Project 4" class="final-render">
+        </div>
+        <div class="project-info-label">
+            <h3>PROJECT FOUR — AR/VR</h3>
+            <p>Creating peace through virtual environments.</p>
+        </div>
+    </a>
+
+</div>
+    </section>
+
+</body>
 </html>
