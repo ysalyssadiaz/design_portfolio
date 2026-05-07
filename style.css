@@ -6,51 +6,142 @@
 }
 
 body {
-  background-color: #f2f2d8;
+
   font-family: "Nunito", sans-serif;
   overflow-x: hidden;
   width: 100%;
   scrollbar-gutter: stable;
   overflow-y: scroll;
+  
+}
+
+.star-background {
+    /* Add a fallback color here just in case */
+  background-color: #efefdd; 
+/* 1. Control your spacing here */
+  --spacing: 2px;   /* This is the total distance from star to star */
+  --star-size: 60px;  /* This is the actual size of the star */
+
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background-color: #efefdd; 
+  z-index: -1;
+  pointer-events: none; 
+}
+
+.star {
+  position: absolute;
+  width: var(--star-size);
+  height: var(--star-size);
+  background-image: url('images/homepage-assets/tiny-star.svg');
+  background-size: cover;
+  pointer-events: none;
+  transition: transform 0.3s ease-out;
+  opacity: 55%;
 }
 
 /* --- HEADER --- */
-header {
-  background-color: #00a3a3;
-  padding: 5px 0 5px 0;
-  text-align: center;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  box-shadow: 0 13px 0 0 #bbdb95;
+.site-header {
+  position: fixed;
+  top: clamp(-350px, -14vw, -300px);
+  left: clamp(-40px, -5vw, -10px);
+  width: 120%;
+  z-index: 1000;
 
-  /* Sticky Magic */
-  position: fixed; /* Locks it to the viewport */
-  top: 0; /* Sticks it to the very top */
-  left: 0;
-  width: 100%; /* Ensures it spans the full width */
-  z-index: 1000; /* High number to stay above everything else */
+  display: flex;
+  justify-content: center;
+
+  background: transparent;
 }
 
-nav a {
-  font-family: "Inconsolata", monospace;
+/* --- THIS IS THE KEY LAYER (rotates everything together) --- */
+.header-tilt {
+  position: relative;
+  width: 120%;
+  transform: rotate(5deg);
+  transform-origin: center;
+}
+
+/* --- IMAGE --- */
+.header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --- NAV OVER IMAGE --- */
+.header-tilt nav {
+  position: absolute;
+  right: clamp(5%, 14%, 20%);
+  bottom: clamp(3%, 7%, 12%);
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  gap: clamp(20px, 4vw, 30px);
+}
+
+/* --- NAV LINKS --- */
+.header-tilt nav a {
+  font-family: "Nunito";
   color: white;
   text-decoration: none;
-  font-weight: 700;
-  margin: 0 90px;
-  font-size: 2.5rem;
-  /* 1. Add a transition to make the growth smooth */
-  display: inline-block; /* Required for transform to work perfectly */
-  transition:
-    transform 0.3s ease,
-    color 0.3s ease;
+  font-weight: 650;
+
+  margin: 0 clamp(30px, 6vw, 110px);
+  font-size: clamp(4rem, 3vw, 6rem);
+
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-nav a:hover {
-  /* 2. Scale it up slightly (1.1 means 110% size) */
+.header-tilt nav a:hover {
   transform: scale(1.1);
-
-  /* 3. Optional: Change the color to your banner green on hover */
   color: #edffcd;
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 600px) {
+  .site-header {
+    top: clamp(-150px, -10vw, -20px);
+    left: clamp(-30px, -3vw, 0px);
+  }
+
+  .header-tilt {
+    transform: rotate(3deg);
+  }
+
+  .header-tilt nav {
+    right: clamp(2%, 10%, 15%);
+    bottom: clamp(2%, 6%, 7%);
+    gap: clamp(15px, 2vw, 20px);
+  }
+
+  .header-tilt nav a {
+    margin: 0 clamp(15px, 3vw, 40px);
+    font-size: clamp(2rem, 2vw, 3rem);
+  }
+
+  .hero-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .intro-text-side {
+    font-size: clamp(0.85rem, 1.5vw, 1.2rem);
+    margin-left: 0;
+    margin-top: 0;
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .work-title {
+    font-size: clamp(2rem, 2vw, 3rem);
+    padding: clamp(15px, 3vw, 40px) clamp(30px, 5vw, 60px);
+  }
 }
 
 /* --- HERO SECTION --- */
@@ -63,7 +154,7 @@ nav a:hover {
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  padding: 190px 5% 60px 5%;
+  padding: 9% 9% 3% 4%;
 }
 
 /* THE LOGO CONTAINER */
@@ -71,21 +162,22 @@ nav a:hover {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 1400px;
-  margin: 0;
+  max-width: 2000px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5%;
+
+  gap: 0;
   padding: 0 5%;
-  pointer-events: none;
 }
 
 .name-logo {
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   height: auto;
   display: block;
+  flex: 0 0 auto;
   flex-shrink: 0;
   /* Animation settings */
   animation: softFloat 4s ease-in-out infinite;
@@ -96,70 +188,46 @@ nav a:hover {
   font-size: clamp(1rem, 2vw, 1.8rem);
   color: #389a39;
   font-weight: 600;
-  max-width: 500px;
+
+  flex: 1 1 300px;
+  max-width: 450px;
+  margin-left: -85px;
+  margin-top: 100px;
+
   animation: softFloat 4s ease-in-out infinite;
 }
 
-/* --- BACKGROUND DECORATIONS --- */
-.bg-star {
-  position: absolute;
-  left: 2%;
-  top: 100px;
-  width: 50vw;
-  max-width: 700px;
-  z-index: 1;
-  opacity: 0.7;
-}
 
-.halftone-1,
-.halftone-2,
-.halftone-3 {
-  position: absolute;
-  z-index: 1;
-  opacity: 0.4;
-  pointer-events: none;
-  width: 40vw;
-  max-width: 800px;
-  /* Adjust '0.2s' to make it faster or slower */
-  animation: jitter 5s step-end infinite;
 
-  /* This ensures the animation doesn't make the circles "jumpy" 
-       for people with motion sensitivity */
-  will-change: transform;
-}
-
-.halftone-1 {
-  top: -10%;
-  right: -5%;
-}
-.halftone-2 {
-  top: 10%;
-  left: 4%;
-}
 
 /* --- WORK SECTION HEADER --- */
 .work-header {
-  width: 98%;
-  max-width: 1600px;
-  margin: -60px auto 60px auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .work-title {
-  font-family: "Inconsolata", monospace;
-  display: inline-block;
-  background-color: #00a3a3;
-  border: 13px solid #bbdb95;
-  border-radius: 24px;
-  min-width: clamp(300px, 42vw, 620px);
-  padding: 12px 72px;
+  font-family: "Nunito";
+  display: block;
+  width: 100%;
+  max-width: 100%;
   color: white;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 800;
-  line-height: 1;
+  font-size: clamp(4rem, 3vw, 6rem);
+  font-weight: 650;
+  line-height: 1.1;
   text-align: center;
+  padding: clamp(12px, 2vw, 30px) clamp(35px, 6vw, 80px);
+  margin: 0 auto;
+  background-image: url('images/homepage-assets/work-title.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto 100%;
+  min-height: 1.2em;
+  max-height: 180px;
 }
 
 /* --- PROJECT FEED (STAGGERED TWO-COLUMN GRID) --- */
