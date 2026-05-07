@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f2f2d8;
+  color: #389a39;
+  font-family: "Nunito", sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  padding: 5px 0;
+  text-align: center;
+  background-color: #00a3a3;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 13px 0 0 #bbdb95;
+}
+
+nav a {
+  font-family: "Inconsolata", monospace;
+  display: inline-block;
+  margin: 0 90px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+nav a:hover {
+  transform: scale(1.1);
+  color: #edffcd;
+}
+
+.about-page {
+  width: min(1400px, 92vw);
+  margin: 0 auto;
+  padding: 140px 0 100px;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-card {
+  background: #fff7de;
+  border: 5px solid #bbdb95;
+  border-radius: 24px;
+  padding: 24px 26px;
+}
+
+.about-card h2 {
+  font-family: "Inconsolata", monospace;
+  color: #00a3a3;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.about-card p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.6;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.interest-line {
+  font-weight: 800;
+  display: inline-block;
+  transform-origin: center;
+  animation: excitedWiggle 1.2s ease-in-out infinite;
+}
+
+.about-card p.contact-heading {
+  font-family: "Inconsolata", monospace;
+  color: #00a3a3;
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-button {
+  font-family: "Inconsolata", monospace;
+  display: inline-block;
+  padding: 10px 16px;
+  border: 3px solid #389a39;
+  border-radius: 999px;
+  background-color: #f2f2d8;
+  color: #389a39;
+  font-size: 1rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  background-color: #389a39;
+  color: #edffcd;
+}
+
+@keyframes excitedWiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  20% {
+    transform: rotate(-2deg) translateY(-1px);
+  }
+  40% {
+    transform: rotate(2deg) translateY(0);
+  }
+  60% {
+    transform: rotate(-1.5deg) translateY(-1px);
+  }
+  80% {
+    transform: rotate(1.5deg) translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  nav a {
+    margin: 0 22px;
+    font-size: 1.6rem;
+  }
+
+  .about-page {
+    padding-top: 138px;
+  }
+
+  .about-card {
+    padding: 20px;
+  }
+}

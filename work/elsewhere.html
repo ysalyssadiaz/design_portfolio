@@ -1,25 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Elsewhere</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="projects.css">
-</head>
-<body>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="projects.css" />
+  </head>
+  <body class="project-elsewhere">
     <header>
-        <nav>
-            <a href="../index.html">WORK</a>
-            <a href="../about.html">ABOUT</a>
-        </nav>
+      <nav>
+        <a href="../index.html">WORK</a>
+        <a href="../about.html">ABOUT</a>
+      </nav>
     </header>
 
+    <main class="container has-project-pager">
+      <section class="hero-section">
+        <h1 class="project-title">Elsewhere</h1>
+        <p class="subtitle">
+          An immersive 3D environment depicting the transition from social
+          misalignment to the peace of solitude.
+        </p>
+        <div class="tech-stack">
+          <strong>Tech:</strong> Unity, Blender, BandLab, C#
+        </div>
+      </section>
 
-</body>
+      <section class="content-block">
+        <div class="text-content">
+          <h2>Social Submersion</h2>
+          <p>
+            The start is a disorienting party. Through custom Voronoi shaders,
+            with fisheye lens and reverb heavy audio, it mimics the "drunken"
+            blur of a social gathering. These layers create a space that is
+            overwhelming, manifesting the weight of social misalignment.
+          </p>
+        </div>
+
+        <div class="two-image-row">
+          <img
+            class="project-img"
+            src="../images/elsewhere-assets/elsewhere-start.png"
+            alt="Elsewhere starting point in space"
+          />
+          <img
+            class="project-img"
+            src="../images/elsewhere-assets/elsewhere-general.png"
+            alt="Balloon slightly hidden by bubble"
+          />
+        </div>
+
+        <div class="text-content">
+          <p>
+            The environment is intentionally difficult to navigate, featuring
+            narrow, squishy pathways and bubbles that obstruct movement. The
+            interaction of finding and popping balloons in this space depicts
+            disengagement; once enough are popped, the world turns anxious,
+            reflecting the fear that the player's presence has inadvertently
+            burst the bubbly atmosphere for others.
+          </p>
+        </div>
+
+        <div class="two-image-row stacked-media">
+          <img
+            class="project-img many-balloons-short"
+            src="../images/elsewhere-assets/many-balloons.png"
+            alt="Many balloons in the environment"
+          />
+          <img
+            class="project-img"
+            src="../images/elsewhere-assets/balloon-pop.gif"
+            alt="Balloon popping moment"
+          />
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="content-block">
+        <div class="text-content">
+          <h2>Path to Solitude</h2>
+          <p>
+            This transition encourages a retreat from that environment. Walking
+            out of this space opens into a natural, serene landscape
+            representing a state of quiet liberation. The experience concludes
+            at a secluded resting point, offering a perspective to look back at
+            the vibrant lives others have bloomed in, allowing for appreciation
+            from a distance.
+          </p>
+        </div>
+
+        <div class="two-image-row">
+          <img
+            class="project-img"
+            src="../images/elsewhere-assets/field.png"
+            alt="Entering the new landscape area"
+          />
+          <img
+            class="project-img"
+            src="../images/elsewhere-assets/hill.png"
+            alt="Watching from the hill"
+          />
+        </div>
+      </section>
+
+      <nav class="project-pager" aria-label="Project navigation">
+        <span class="project-pager-spacer" aria-hidden="true"></span>
+        <a class="project-pager-link" href="reachupforthesky.html"
+          >Reach Up for the Sky →</a
+        >
+      </nav>
+    </main>
+  </body>
 </html>

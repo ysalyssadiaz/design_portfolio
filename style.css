@@ -7,7 +7,7 @@
 
 body {
   background-color: #f2f2d8;
-  font-family: "Inconsolata", monospace;
+  font-family: "Nunito", sans-serif;
   overflow-x: hidden;
   width: 100%;
   scrollbar-gutter: stable;
@@ -32,6 +32,7 @@ header {
 }
 
 nav a {
+  font-family: "Inconsolata", monospace;
   color: white;
   text-decoration: none;
   font-weight: 700;
@@ -59,10 +60,10 @@ nav a:hover {
   min-height: 900px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  padding: 180px 5% 60px 5%;
+  padding: 190px 5% 60px 5%;
 }
 
 /* THE LOGO CONTAINER */
@@ -138,26 +139,27 @@ nav a:hover {
 
 /* --- WORK SECTION HEADER --- */
 .work-header {
-  position: relative;
   width: 98%;
   max-width: 1600px;
-  margin: 120px auto 60px auto;
+  margin: -60px auto 60px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.work-headline-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 .work-title {
-  position: absolute;
+  font-family: "Inconsolata", monospace;
+  display: inline-block;
+  background-color: #00a3a3;
+  border: 13px solid #bbdb95;
+  border-radius: 24px;
+  min-width: clamp(300px, 42vw, 620px);
+  padding: 12px 72px;
   color: white;
-  font-size: 6rem;
-  font-weight: 700;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  text-align: center;
 }
 
 /* --- PROJECT FEED (STAGGERED TWO-COLUMN GRID) --- */
@@ -210,13 +212,14 @@ nav a:hover {
 .project-info-label {
   background-color: #00a3a3;
   color: white;
-  width: 85%;
+  width: 100%;
   padding: 42px 30px 15px 30px;
 
   /* Tucked under the image */
   margin: -35px 0 0 0; /* Keeps it strictly to the left edge of the card */
 
   border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
 
   position: relative;
   z-index: 2;
@@ -224,6 +227,7 @@ nav a:hover {
 }
 
 .project-info-label h3 {
+  font-family: "Inconsolata", monospace;
   font-size: 1.8rem; /* Scaled down slightly for 2-column fit */
   font-weight: 800;
   margin-bottom: 5px;

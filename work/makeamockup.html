@@ -1,26 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Make a Mockup!</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="projects.css">
-</head>
-<body>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="projects.css" />
+  </head>
+  <body class="project-mockup">
     <header>
-        <nav>
-            <a href="../index.html">WORK</a>
-            <a href="../about.html">ABOUT</a>
-        </nav>
+      <nav>
+        <a href="../index.html">WORK</a>
+        <a href="../about.html">ABOUT</a>
+      </nav>
     </header>
-    
 
+    <main class="container has-project-pager">
+      <section class="hero-section">
+        <h1 class="project-title">Make a Mockup!</h1>
+        <p class="subtitle">
+          A browser-based game that simplifies the early stages of fashion
+          design.
+        </p>
+        <div class="tech-stack">
+          <strong>Tech:</strong> Illustrator, HTML, CSS, JavaScript
+        </div>
+      </section>
 
-</body>
+      <section class="content-block">
+        <div class="text-content">
+          <h2>Drag Drop and Design</h2>
+          <p>
+            The core of the game is a simple drag and drop system that is used
+            to mix and match sections of clothing. Players can move different
+            bodice and skirt pieces onto a central mannequin, letting them find
+            their favourite combinations.
+          </p>
+        </div>
+
+        <div class="text-content">
+          <h2>Boutique Aesthetics</h2>
+          <p>
+            The interface is inspired by parisian vintage storefronts. The bold
+            black stripes and scallops creates charm while also separating the
+            menus of bodices and skirts, making it easier for players to see
+            their options and create focus on the central mannequin. White with
+            black outlines were used for the piece illustrations to mimic the
+            flat images found in pattern drafting books, emphasizing the mockup
+            experience.
+          </p>
+        </div>
+
+        <div class="embedded-site-frame">
+          <iframe
+            src="https://anysas.github.io/codingclass/assignment3/"
+            title="Make a Mockup interactive site"
+            loading="lazy"
+            allow="autoplay 'none'; fullscreen"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p class="embed-fallback">
+          Open it directly:
+          <a
+            href="https://anysas.github.io/codingclass/assignment3/"
+            target="_blank"
+            >Make a Mockup</a
+          >
+        </p>
+      </section>
+
+      <nav class="project-pager" aria-label="Project navigation">
+        <a class="project-pager-link" href="spark.html">← Spark</a>
+        <span class="project-pager-spacer" aria-hidden="true"></span>
+      </nav>
+    </main>
+  </body>
 </html>

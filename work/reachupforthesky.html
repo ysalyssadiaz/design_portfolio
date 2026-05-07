@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="projects.css" />
   </head>
-  <body>
+
+  <body class="project-reach">
     <header>
       <nav>
         <a href="../index.html">WORK</a>
@@ -22,9 +23,11 @@
       </nav>
     </header>
 
-    <main class="container">
-      <section class="hero-section">
+    <main class="container has-project-pager">
+      <!-- NEW INTRO SPLIT SECTION -->
+      <section class="intro-top">
         <h1 class="project-title">Reach Up for the Sky</h1>
+
         <p class="subtitle">
           An immersive 3D environment exploring how biased AI-generated content
           can influence a girl’s ambitions.
@@ -32,18 +35,22 @@
 
         <div class="tech-stack">
           <strong>Tech:</strong> Unity, Blender, Clip Studio Paint, Photoshop,
-          ChatGPT
+          ChatGPT Image Generator, C#
         </div>
       </section>
 
-      <section class="content-block">
-        <div class="text-content">
-          <h2>01. Visualising Infinite Potential</h2>
+      <!-- SPLIT SECTION (TEXT LEFT / IMAGES RIGHT) -->
+      <section class="intro-split">
+        <!-- LEFT TEXT -->
+        <div class="intro-text">
+          <h2>Visualising Infinite Potential</h2>
+
           <p>
             To represent the expansive imagination of childhood, I developed a
             sketched aesthetic that combines 2D hand-drawn assets with a blank
             3D white space.
           </p>
+
           <p>
             The experience is structured as a vertical tower where each floor
             represents a discovered interest. Vibrant imagery and particle
@@ -53,40 +60,32 @@
           </p>
         </div>
 
-        <div class="image-grid-pot">
-          <img
-            class="project-img"
-            src="../images/reachupforthesky-assets/infpotential1.png"
-            alt="Infinite Potential 1"
-          />
-          <img
-            class="project-img"
-            src="../images/reachupforthesky-assets/infpotential2.png"
-            alt="Infinite Potential 2"
-          />
-          <img
-            class="project-img"
-            src="../images/reachupforthesky-assets/infpotential3.png"
-            alt="Infinite Potential 3"
-          />
-          <img
-            class="project-img"
-            src="../images/reachupforthesky-assets/infpotential4.png"
-            alt="Infinite Potential 4"
-          />
+        <!-- RIGHT IMAGES -->
+        <div class="intro-images">
+          <img src="../images/reachupforthesky-assets/infpotential1.png" />
+          <img src="../images/reachupforthesky-assets/infpotential2.png" />
+          <img src="../images/reachupforthesky-assets/infpotential3.png" />
+          <img src="../images/reachupforthesky-assets/infpotential4.png" />
         </div>
       </section>
 
       <hr class="divider" />
 
+      <!-- SECOND SECTION (UNCHANGED) -->
       <section class="content-block">
         <div class="text-content">
-          <h2>02. A Weighted Reality</h2>
+          <h2>A Weighted Reality</h2>
           <p>
-            <strong>The ascent is a subversion.</strong> Upon reaching the final
-            floor, the player’s expectation of “the top” is overturned as they
-            emerge at a city ground level. Despite the efforts to climb and
-            dream, girls are still restricted by structures above.
+            The ascent is a subversion. Upon reaching the final floor, the
+            player’s expectation of “the top” is overturned as they emerge at a
+            city ground level. Despite the efforts to climb and dream, girls are
+            still restricted by structures above.
+          </p>
+          <p>
+            The city utilizes a grayscale palette and repetitive blocks to evoke
+            a sense of stagnation. A cube mapped sky of AI generated women in
+            stereotypical fields boxes the user within a ceiling of algorithm
+            bias, making the sky limiting.
           </p>
         </div>
 
@@ -94,36 +93,25 @@
           <img
             class="project-img"
             src="../images/reachupforthesky-assets/city-birdseyeview.png"
-            alt="City Bird's Eye View"
           />
         </div>
 
-        <div class="split-content">
-          <div class="text-content">
-            <p>
-              The city utilizes a grayscale palette and repetitive blocks to
-              evoke a sense of stagnation. A cube mapped sky of AI generated
-              women in stereotypical fields boxes the user within a ceiling of
-              algorithm bias, making the sky limiting.
-            </p>
-          </div>
-          <div class="side-img">
-            <img
-              class="project-img"
-              src="../images/reachupforthesky-assets/cityblock-closeup.png"
-              alt="City Block Detail"
-            />
-          </div>
-        </div>
-
-        <div class="full-width-img sky-moment">
+        <div class="reach-bottom-images">
+          <img
+            class="project-img"
+            src="../images/reachupforthesky-assets/cityblock-closeup.png"
+          />
           <img
             class="project-img"
             src="../images/reachupforthesky-assets/aisky.png"
-            alt="Caged Skybox view"
           />
         </div>
       </section>
+
+      <nav class="project-pager" aria-label="Project navigation">
+        <a class="project-pager-link" href="elsewhere.html">← Elsewhere</a>
+        <a class="project-pager-link" href="spark.html">Spark →</a>
+      </nav>
     </main>
   </body>
 </html>
