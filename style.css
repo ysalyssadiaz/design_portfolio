@@ -46,43 +46,62 @@ body {
 /* --- HEADER --- */
 .site-header {
   position: fixed;
-  top: clamp(-350px, -14vw, -300px);
-  left: clamp(-40px, -5vw, -10px);
-  width: 120%;
+  top: -305px;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 
   background: transparent;
+  overflow: visible;
 }
 
 /* --- THIS IS THE KEY LAYER (rotates everything together) --- */
 .header-tilt {
   position: relative;
   width: 120%;
-  transform: rotate(5deg);
-  transform-origin: center;
+  height: 18rem;
+  pointer-events: none;
+  transform-origin: top left;
+  overflow: visible;
 }
 
-/* --- IMAGE --- */
-.header-img {
-  width: 100%;
-  height: auto;
-  display: block;
+.header-tilt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 130%;
+  height: 130%;
+  background: linear-gradient(90deg, #bbdb95 0%, #009ea4 100%);
+  z-index: -1;
+}
+
+.header-tilt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(130% - 1rem);
+  width: 130%;
+  height: 1rem;
+  background: linear-gradient(180deg, #bbdb95 0%, #bbdb95 30%, #009ea4 30%, #009ea4 100%);
+  z-index: -1;
 }
 
 /* --- NAV OVER IMAGE --- */
 .header-tilt nav {
   position: absolute;
-  right: clamp(5%, 14%, 20%);
-  bottom: clamp(3%, 7%, 12%);
+  right: 1%;
+  bottom: -70px;
+  pointer-events: auto;
 
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
 
-  gap: clamp(20px, 4vw, 30px);
+  gap: 2rem;
 }
 
 /* --- NAV LINKS --- */
@@ -92,8 +111,8 @@ body {
   text-decoration: none;
   font-weight: 650;
 
-  margin: 0 clamp(30px, 6vw, 110px);
-  font-size: clamp(4rem, 3vw, 6rem);
+  margin: 0 30px;
+  font-size: 2.3rem;
 
   transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -103,241 +122,218 @@ body {
   color: #edffcd;
 }
 
-/* Mobile menu adjustments */
-@media (max-width: 600px) {
-  .site-header {
-    top: clamp(-150px, -10vw, -20px);
-    left: clamp(-30px, -3vw, 0px);
-  }
-
-  .header-tilt {
-    transform: rotate(3deg);
-  }
-
-  .header-tilt nav {
-    right: clamp(2%, 10%, 15%);
-    bottom: clamp(2%, 6%, 7%);
-    gap: clamp(15px, 2vw, 20px);
-  }
-
-  .header-tilt nav a {
-    margin: 0 clamp(15px, 3vw, 40px);
-    font-size: clamp(2rem, 2vw, 3rem);
-  }
-
-  .hero-container {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .intro-text-side {
-    font-size: clamp(0.85rem, 1.5vw, 1.2rem);
-    margin-left: 0;
-    margin-top: 0;
-    max-width: 100%;
-    flex: 1 1 auto;
-  }
-
-  .work-title {
-    font-size: clamp(2rem, 2vw, 3rem);
-    padding: clamp(15px, 3vw, 40px) clamp(30px, 5vw, 60px);
-  }
-}
 
 /* --- HERO SECTION --- */
 #hero {
   position: relative;
   width: 100%;
-  min-height: 900px;
+  min-height: calc(100vh - 7rem);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 9% 9% 3% 4%;
+  padding: 1rem 1% 1rem 1%;
 }
 
+/* THE LOGO CONTAINER */
 /* THE LOGO CONTAINER */
 .hero-container {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 2000px;
-
+  max-width: 90vw; /* Increased slightly for more breathing room */
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  align-items: center; /* Keeps text perfectly centered to image height */
   justify-content: center;
-
-  gap: 0;
-  padding: 0 5%;
+  gap: 0; 
 }
 
 .name-logo {
+  /* Scale this down slightly if the text is still hitting the logo */
   width: 100%;
-  max-width: 1000px;
+  max-width: 1300px; 
   height: auto;
   display: block;
-  flex: 0 0 auto;
-  flex-shrink: 0;
-  /* Animation settings */
   animation: softFloat 4s ease-in-out infinite;
+  
+  /* REDUCED: Adjust this number to move text left or right */
+  margin-right: -60px; 
+  
+  /* Prevents the logo from shrinking when the text needs space */
+  flex-shrink: 0; 
 }
 
 /* Intro text beside logo */
 .intro-text-side {
-  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-size: 2.1rem;
   color: #389a39;
-  font-weight: 600;
-
-  flex: 1 1 300px;
-  max-width: 450px;
-  margin-left: -85px;
-  margin-top: 100px;
-
+  font-weight: 700;
+  max-width: 450px; 
+  line-height: 1.3;
   animation: softFloat 4s ease-in-out infinite;
+  
+  margin-bottom: 0;
+  margin-top: 210px;
+  text-align: left;
+  
+  /* Ensures text stays on top visually */
+  position: relative;
+  z-index: 11;
+  
+  /* Prevents the text block from getting too narrow */
+  flex-shrink: 0; 
 }
 
 
-
-
-/* --- WORK SECTION HEADER --- */
-.work-header {
+/* work section */
+#work {
   width: 100%;
-  max-width: none;
-  margin: 0;
+  border-radius: 80px 80px 0 0;
+
+  box-shadow: 0 0 0 10px #009ea4;
+
+  background: linear-gradient(
+    #d5e7b4 0%,
+    rgba(239, 239, 221, 0.2) 20%
+  );
+
+  /* Essential: because the shadow is outside the box, 
+     add a margin so it doesn't get cut off by the screen edge */
+  margin-top: 10px; 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
-.work-title {
-  font-family: "Nunito";
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  color: white;
-  font-size: clamp(4rem, 3vw, 6rem);
-  font-weight: 650;
-  line-height: 1.1;
-  text-align: center;
-  padding: clamp(12px, 2vw, 30px) clamp(35px, 6vw, 80px);
-  margin: 0 auto;
-  background-image: url('images/homepage-assets/work-title.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: auto 100%;
-  min-height: 1.2em;
-  max-height: 180px;
-}
-
-/* --- PROJECT FEED (STAGGERED TWO-COLUMN GRID) --- */
-.project-feed {
-  width: 98%;
-  max-width: 1800px; /* Slightly narrower lane for a tighter grid feel */
-  margin: 0 auto 100px auto;
-  display: flex;
-  flex-wrap: wrap; /* Allows cards to move to the next row */
-  justify-content: center;
-  gap: 40px; /* Horizontal space between columns */
-}
-
-/* THE CARDS */
-.project-card {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-
-  /* This width (45%) ensures two cards sit side-by-side */
-  flex: 0 1 48%;
-  max-width: 1200px;
-
+/* --- work section title--- */
+.work-title-wrapper {
+  display: inline-flex;
+  flex-direction: row; /* Keeps star on the right */
+  align-items: center;
   position: relative;
-  transition: transform 0.2s;
-  margin-bottom: 10px; /* Space between rows */
+  margin-top: 50px; /* Adjust based on your section border thickness */
+  z-index: 10;
+  margin-bottom: 120px;
 }
 
-/* THE STAGGER EFFECT 
-   This targets the 2nd, 4th, 6th card etc. and pushes them down 
-   to create that "un-even" stacking look. */
-.project-card:nth-of-type(even) {
-  margin-top: 100px;
-}
-
-.project-card:hover {
-  transform: scale(1.01);
-}
-
-/* THE PROJECT IMAGE */
-.final-render {
-  width: 100%;
+/* 2. The Star Image */
+.star-icon {
+  width: 125px;  /* Adjust to your preference */
   height: auto;
-  display: block;
-  position: relative;
-  z-index: 5;
+  z-index: 2;
+  margin-left: 0px;
+  margin-right: -80px;
+
 }
 
-/* THE TEXT LABEL BAR (Always Left) */
-.project-info-label {
-  background-color: #00a3a3;
-  color: white;
+/* 3. The Bubble */
+.work-title {
+  background-color: #efefdd;
+  border: 9px solid #009ea4;
+  border-radius: 999px;
+  padding: 0px 100px 0px 100px; /* More padding on the right for the star space */
+  color: #009ea4;
+  font-family: 'Nunito';
+  font-size: 4rem;
+  font-weight: 800;
+
+/* --- REVERSED HALFTONE EFFECT --- */
+background-image: 
+    linear-gradient(to left, #efefdd 20%, transparent 80%),
+    /* Increased 20% to 45% to make the dot fill more of its square */
+    radial-gradient(#d5e7b4 30%, transparent 50%);
+  
+  /* Decreased 38px to 15px to bring the dots physically closer */
+  background-size: 100% 100%, 15px 15px;
+  background-repeat: no-repeat, repeat;
+}
+
+
+
+/* --- PROJECT FEED --- */
+.project-feed {
   width: 100%;
-  padding: 42px 30px 15px 30px;
+  max-width: 85vw;
+  margin: 0 auto 100px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
 
-  /* Tucked under the image */
-  margin: -35px 0 0 0; /* Keeps it strictly to the left edge of the card */
-
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-
+/* --- THE CARD CONTAINER --- */
+.project-card {
+  display: block;
+  text-decoration: none;
+  width: 100%;
   position: relative;
-  z-index: 2;
-  text-align: left;
+  border-radius: 60px;
+  overflow: visible; /* Important: allows label to hang off the edge */
+  transition: transform 0.25s ease;
+  margin-bottom: 4rem;
+}
+
+/* --- THE FLOATING LABEL (THE STICKER) --- */
+.project-info-label {
+  position: absolute;
+  top: -30px;    /* Pulls it up over the top border */
+  left: -20px;   /* Pulls it over the left border */
+  background-color: #efefdd; /* Light cream/green */
+  border: 8px solid #009ea4; /* Teal border */
+  border-radius: 60px;
+  padding: 15px 50px;
+  z-index: 10;
+  max-width: 80%;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.05);
 }
 
 .project-info-label h3 {
-  font-family: "Inconsolata", monospace;
-  font-size: 1.8rem; /* Scaled down slightly for 2-column fit */
-  font-weight: 800;
-  margin-bottom: 5px;
+  color: #009ea4;
+  font-family: 'Nunito', sans-serif;
+  font-size: 3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.project-info-label h3 .subtitle {
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .project-info-label p {
-  font-size: 1.2rem; /* Scaled down slightly for 2-column fit */
+  color:#389a39; /* Mossy green text */
+  font-size: 2rem;
+  font-weight: 600;
 }
 
-/* --- RESPONSIVE DESIGN --- */
-@media screen and (max-width: 1024px) {
-  .project-card {
-    flex: 0 1 100%; /* Switch to 1 column on tablets/phones */
-    max-width: 800px;
-  }
-
-  .project-card:nth-of-type(even) {
-    margin-top: 0; /* Remove stagger on mobile so they just stack straight */
-  }
-
-  /* Stack banner content on smaller screens */
-  .intro-banner-inner {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-
-  .intro-text {
-    max-width: 90%;
-  }
+/* --- THE IMAGE --- */
+.project-image-container {
+  width: 100%;
+  height: 450px;
+  overflow: hidden;
+  border-radius: 90px; /* Matches the inner curve of the thick border */
+  display: flex;
+  border: #bbdb95 12px solid;
 }
 
-@media screen and (max-width: 768px) {
-  .intro-banner-full {
-    top: 60%;
-    padding: 15px 0;
-  }
-
-  .name-logo {
-    max-width: 90%;
-  }
+.final-render {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
+
+/* --- HOVER EFFECTS --- */
+.project-card:hover {
+  /* Keeps your existing wiggle/scale animations */
+  animation: project-hover-entry 0.25s ease-out forwards,
+             project-hover-wiggle 1.1s 0.25s infinite ease-in-out;
+}
+
 
 /* 1. Define the "Floating" movement */
 @keyframes softFloat {
@@ -386,5 +382,44 @@ body {
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+@keyframes project-hover-entry {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.01) translateY(-8px);
+  }
+  100% {
+    transform: scale(1.03) translateY(0);
+  }
+}
+
+@keyframes project-hover-wiggle {
+  0% {
+    transform: scale(1.03) translateY(0) rotate(0deg);
+  }
+  10% {
+    transform: scale(1.03) translateY(-4px) rotate(-0.2deg);
+  }
+  25% {
+    transform: scale(1.03) translateY(-2px) rotate(0.2deg);
+  }
+  40% {
+    transform: scale(1.03) translateY(-5px) rotate(-0.2deg);
+  }
+  55% {
+    transform: scale(1.03) translateY(-3px) rotate(0.2deg);
+  }
+  70% {
+    transform: scale(1.03) translateY(-4px) rotate(-0.2deg);
+  }
+  85% {
+    transform: scale(1.03) translateY(-2px) rotate(0.2deg);
+  }
+  100% {
+    transform: scale(1.03) translateY(0) rotate(0deg);
   }
 }
