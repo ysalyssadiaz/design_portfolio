@@ -5,48 +5,73 @@
   box-sizing: border-box;
 }
 
-body {
+:root {
+  /* Step -1: Small text (captions, labels) */
+  --step--1: clamp(0.9377rem, 0.5627rem + 0.4167vw, 1.1253rem);
 
+  /* Step 0: Body Text (Standard paragraphs) */
+  --step-0: clamp(1.25rem, 0.5rem + 0.8333vw, 1.5rem);
+
+  /* Step 1: Sub-headings or large UI text */
+  --step-1: clamp(1.6663rem, 0.4165rem + 1.3887vw, 2.0003rem);
+
+  /* Step 2: H3 / Section Titles */
+  --step-2: clamp(2.2211rem, 0.1376rem + 2.315vw, 2.7777rem);
+
+  /* Step 3: H2 / Large Titles */
+  --step-3: clamp(2.9607rem, -0.4137rem + 3.7493vw, 3.8643rem);
+
+  /* Step 4: H1 / Hero Titles */
+  --step-4: clamp(3.9467rem, -1.3323rem + 5.8656vw, 5.3582rem);
+
+  /* Step 5: Massive Display Text */
+  --step-5: clamp(5.261rem, -2.8596rem + 9.0229vw, 7.4285rem);
+}
+
+body {
   font-family: "Nunito", sans-serif;
   overflow-x: hidden;
   width: 100%;
   scrollbar-gutter: stable;
   overflow-y: scroll;
-  
 }
 
 .star-background {
-    /* Add a fallback color here just in case */
-  background-color: #efefdd; 
-/* 1. Control your spacing here */
-  --spacing: 2px;   /* This is the total distance from star to star */
-  --star-size: 60px;  /* This is the actual size of the star */
+  background-color: #efefdd;
+
+  --spacing: 10px;
+  --star-size: 120px;
 
   position: fixed;
   top: -10%;
   left: -10%;
   width: 120%;
   height: 120%;
-  background-color: #efefdd; 
+  background-color: #efefdd;
   z-index: -1;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .star {
   position: absolute;
   width: var(--star-size);
   height: var(--star-size);
-  background-image: url('images/homepage-assets/tiny-star.svg');
+  background-image: url("images/homepage-assets/tiny-star.svg");
   background-size: cover;
   pointer-events: none;
   transition: transform 0.3s ease-out;
-  opacity: 55%;
+  opacity: 0.55;
 }
 
 /* --- HEADER --- */
 .site-header {
+  /* Main diagonal fill height (relative to .header-tilt); strip aligns to this */
+  --header-wedge-scale: 120%;
+  --header-strip-h: clamp(1.2rem, 3.2vw, 1.5rem);
+  --header-strip-green-end: 46%;
+
   position: fixed;
-  top: -305px;
+  top: clamp(-18.25rem, -42vw, -11.5rem);
   left: 0;
   width: 100%;
   z-index: 1000;
@@ -56,16 +81,18 @@ body {
 
   background: transparent;
   overflow: visible;
+  padding-top: max(0.85rem, env(safe-area-inset-top, 0px));
 }
 
-/* --- THIS IS THE KEY LAYER (rotates everything together) --- */
 .header-tilt {
   position: relative;
-  width: 120%;
-  height: 18rem;
+  width: min(116%, calc(100% + 2.25rem));
+  height: clamp(9.75rem, 26vw, 16rem);
   pointer-events: none;
   transform-origin: top left;
   overflow: visible;
+  isolation: isolate;
+  z-index: 0;
 }
 
 .header-tilt::before {
@@ -73,35 +100,54 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: 130%;
-  height: 130%;
+  width: min(122%, 128vw);
+  height: var(--header-wedge-scale);
   background: linear-gradient(90deg, #bbdb95 0%, #009ea4 100%);
-  z-index: -1;
+  z-index: 0;
 }
 
 .header-tilt::after {
   content: "";
   position: absolute;
   left: 0;
-  top: calc(130% - 1rem);
-  width: 130%;
-  height: 1rem;
-  background: linear-gradient(180deg, #bbdb95 0%, #bbdb95 30%, #009ea4 30%, #009ea4 100%);
-  z-index: -1;
+  top: calc(var(--header-wedge-scale) - var(--header-strip-h));
+  width: min(122%, 128vw);
+  height: var(--header-strip-h);
+  background: linear-gradient(
+    180deg,
+    #bbdb95 0%,
+    #bbdb95 var(--header-strip-green-end),
+    #009ea4 var(--header-strip-green-end),
+    #009ea4 100%
+  );
+  z-index: 1;
 }
 
 /* --- NAV OVER IMAGE --- */
 .header-tilt nav {
   position: absolute;
-  right: 1%;
-  bottom: -70px;
+  right: max(0.75rem, env(safe-area-inset-right, 0px));
+  /* Strip starts (wedge − 100%) × header height below this box; min() floors
+     extension so links stay in view when the wedge % is small */
+  bottom: max(
+    -4.375rem,
+    min(
+      -2.65rem,
+      calc(
+        -1 * (var(--header-wedge-scale) - 100%) + var(--header-strip-h) + 1rem
+      )
+    )
+  );
+  z-index: 2;
   pointer-events: auto;
 
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  flex-wrap: wrap;
+  row-gap: 0.35rem;
 
-  gap: 2rem;
+  gap: clamp(0.75rem, 3vw, 2rem);
 }
 
 /* --- NAV LINKS --- */
@@ -111,17 +157,18 @@ body {
   text-decoration: none;
   font-weight: 650;
 
-  margin: 0 30px;
-  font-size: 2.3rem;
+  margin: 0 clamp(0.25rem, 2vw, 1rem);
+  font-size: clamp(1.15rem, 2.2vw + 0.5rem, var(--step-2));
 
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .header-tilt nav a:hover {
   transform: scale(1.1);
   color: #edffcd;
 }
-
 
 /* --- HERO SECTION --- */
 #hero {
@@ -133,59 +180,50 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 1rem 1% 1rem 1%;
+  padding: 5rem 1rem 0rem 0rem;
 }
 
-/* THE LOGO CONTAINER */
 /* THE LOGO CONTAINER */
 .hero-container {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 90vw; /* Increased slightly for more breathing room */
+  max-width: 85vw;
   display: flex;
   flex-direction: row;
-  align-items: center; /* Keeps text perfectly centered to image height */
-  justify-content: center;
-  gap: 0; 
+  align-items: center;
+  gap: 0;
 }
 
 .name-logo {
-  /* Scale this down slightly if the text is still hitting the logo */
   width: 100%;
-  max-width: 1300px; 
+  max-width: 60vw;
   height: auto;
   display: block;
   animation: softFloat 4s ease-in-out infinite;
-  
-  /* REDUCED: Adjust this number to move text left or right */
-  margin-right: -60px; 
-  
-  /* Prevents the logo from shrinking when the text needs space */
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 /* Intro text beside logo */
 .intro-text-side {
-  font-size: 2.1rem;
   color: #389a39;
-  font-weight: 700;
-  max-width: 450px; 
-  line-height: 1.3;
+  font-weight: 600;
+  max-width: 25vw;
+  line-height: 1.2;
+  font-size: var(--step-2);
   animation: softFloat 4s ease-in-out infinite;
-  
-  margin-bottom: 0;
-  margin-top: 210px;
+  margin-bottom: 8rem;
+  margin-left: -1.8em;
   text-align: left;
-  
+  padding-top: 18rem;
+
   /* Ensures text stays on top visually */
   position: relative;
   z-index: 11;
-  
-  /* Prevents the text block from getting too narrow */
-  flex-shrink: 0; 
-}
 
+  /* Prevents the text block from getting too narrow */
+  flex-shrink: 0;
+}
 
 /* work section */
 #work {
@@ -194,14 +232,11 @@ body {
 
   box-shadow: 0 0 0 10px #009ea4;
 
-  background: linear-gradient(
-    #d5e7b4 0%,
-    rgba(239, 239, 221, 0.2) 20%
-  );
+  background: linear-gradient(#d5e7b4 0%, rgba(239, 239, 221, 0.2) 20%);
 
   /* Essential: because the shadow is outside the box, 
      add a margin so it doesn't get cut off by the screen edge */
-  margin-top: 10px; 
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,23 +244,24 @@ body {
 
 /* --- work section title--- */
 .work-title-wrapper {
+  height: 3rem;
   display: inline-flex;
   flex-direction: row; /* Keeps star on the right */
   align-items: center;
   position: relative;
-  margin-top: 50px; /* Adjust based on your section border thickness */
+  margin-top: 50px;
   z-index: 10;
-  margin-bottom: 120px;
+  margin-bottom: 8rem;
+  margin-right: 9rem;
+  margin-top: 5rem;
 }
 
 /* 2. The Star Image */
 .star-icon {
-  width: 125px;  /* Adjust to your preference */
+  max-height: 325%;
   height: auto;
   z-index: 2;
-  margin-left: 0px;
-  margin-right: -80px;
-
+  margin-right: -6.7rem;
 }
 
 /* 3. The Bubble */
@@ -233,24 +269,24 @@ body {
   background-color: #efefdd;
   border: 9px solid #009ea4;
   border-radius: 999px;
-  padding: 0px 100px 0px 100px; /* More padding on the right for the star space */
+  padding: 0px 90px 0px 95px; /* More padding on the right for the star space */
   color: #009ea4;
-  font-family: 'Nunito';
-  font-size: 4rem;
-  font-weight: 800;
+  font-family: "Nunito";
+  font-size: var(--step-4);
+  font-weight: 700;
 
-/* --- REVERSED HALFTONE EFFECT --- */
-background-image: 
+  /* --- REVERSED HALFTONE EFFECT --- */
+  background-image:
     linear-gradient(to left, #efefdd 20%, transparent 80%),
     /* Increased 20% to 45% to make the dot fill more of its square */
     radial-gradient(#d5e7b4 30%, transparent 50%);
-  
+
   /* Decreased 38px to 15px to bring the dots physically closer */
-  background-size: 100% 100%, 15px 15px;
+  background-size:
+    100% 100%,
+    15px 15px;
   background-repeat: no-repeat, repeat;
 }
-
-
 
 /* --- PROJECT FEED --- */
 .project-feed {
@@ -277,8 +313,8 @@ background-image:
 /* --- THE FLOATING LABEL (THE STICKER) --- */
 .project-info-label {
   position: absolute;
-  top: -30px;    /* Pulls it up over the top border */
-  left: -20px;   /* Pulls it over the left border */
+  top: -30px; /* Pulls it up over the top border */
+  left: -20px; /* Pulls it over the left border */
   background-color: #efefdd; /* Light cream/green */
   border: 8px solid #009ea4; /* Teal border */
   border-radius: 60px;
@@ -290,8 +326,8 @@ background-image:
 
 .project-info-label h3 {
   color: #009ea4;
-  font-family: 'Nunito', sans-serif;
-  font-size: 3rem;
+  font-family: "Nunito", sans-serif;
+  font-size: 50px;
   margin: 0;
   display: flex;
   align-items: center;
@@ -299,14 +335,14 @@ background-image:
 }
 
 .project-info-label h3 .subtitle {
-  font-size: 2rem;
+  font-size: 31px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .project-info-label p {
-  color:#389a39; /* Mossy green text */
-  font-size: 2rem;
+  color: #389a39; /* Mossy green text */
+  font-size: 31px;
   font-weight: 600;
 }
 
@@ -330,10 +366,10 @@ background-image:
 /* --- HOVER EFFECTS --- */
 .project-card:hover {
   /* Keeps your existing wiggle/scale animations */
-  animation: project-hover-entry 0.25s ease-out forwards,
-             project-hover-wiggle 1.1s 0.25s infinite ease-in-out;
+  animation:
+    project-hover-entry 0.25s ease-out forwards,
+    project-hover-wiggle 1.1s 0.25s infinite ease-in-out;
 }
-
 
 /* 1. Define the "Floating" movement */
 @keyframes softFloat {
